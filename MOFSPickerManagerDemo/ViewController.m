@@ -34,8 +34,12 @@
         
         //单例方法
 //        [MOFSPickerManager shareManger].datePicker.toolBar.cancelBar.textColor = [UIColor redColor];
-        [[MOFSPickerManager shareManger].datePicker.toolBar.cancelBar setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [MOFSPickerManager shareManger].datePicker.toolBar.backgroundColor = [UIColor redColor];
+//        [[MOFSPickerManager shareManger].datePicker.toolBar.cancelBar setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+////        [MOFSPickerManager shareManger].datePicker.toolBar.cancelBar.frame = CGRectMake(10, 0, 100, 20);
+//        [[MOFSPickerManager shareManger].datePicker.toolBar.cancelBar setBackgroundColor:[UIColor blueColor]];
+//
+//
+//        [MOFSPickerManager shareManger].datePicker.toolBar.backgroundColor = [UIColor redColor];
 
         [MOFSPickerManager shareManger].datePicker.toolBar.titleBarTitle = @"选择日期";
         [MOFSPickerManager shareManger].datePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];

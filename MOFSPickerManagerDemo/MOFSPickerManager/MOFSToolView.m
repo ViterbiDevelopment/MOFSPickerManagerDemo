@@ -19,79 +19,42 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        //self.translatesAutoresizingMaskIntoConstraints = false;
-        
+
         _cancelBar = [UIButton buttonWithType:UIButtonTypeCustom];
-//        _cancelBar.font = [UIFont systemFontOfSize:14];
-        _cancelBar.titleLabel.font = [UIFont systemFontOfSize:14];
-//        _cancelBar.textColor = BAR_COLOR;
-        [_cancelBar setTitleColor:BAR_COLOR forState:UIControlStateNormal];
+        _cancelBar.titleLabel.font = [UIFont systemFontOfSize: 15];
+        [_cancelBar setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _cancelBar.backgroundColor = [UIColor colorWithRed:172/255.0 green:170/255.0 blue:173/255.0 alpha:1];
         [_cancelBar setTitle:@"取消" forState:UIControlStateNormal];
         [_cancelBar addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_cancelBar];
-        [_cancelBar setTranslatesAutoresizingMaskIntoConstraints:false];
-        [_cancelBar setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
-        [_cancelBar setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
-        
+
         _titleBar = [UILabel new];
-        _titleBar.font = [UIFont systemFontOfSize:14];
+        _titleBar.font = [UIFont systemFontOfSize: 15];
         _titleBar.textAlignment = NSTextAlignmentCenter;
-        _titleBar.textColor = LINE_COLOR;
+        _titleBar.textColor = [UIColor blackColor];
+        _titleBar.frame = CGRectMake(65, 0, UISCREEN_WIDTH - 130, frame.size.height);
         [self addSubview:_titleBar];
-        [_titleBar setTranslatesAutoresizingMaskIntoConstraints:false];
-        [_titleBar setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
         
         _commitBar = [UIButton buttonWithType:UIButtonTypeCustom];
-//        _commitBar.font = [UIFont systemFontOfSize:14];
-        _commitBar.titleLabel.font = [UIFont systemFontOfSize:14];
-//        _commitBar.textColor = BAR_COLOR;
-        [_commitBar setTitleColor:BAR_COLOR forState:UIControlStateNormal];
-        [_commitBar setTitle:@"完成" forState:UIControlStateNormal];
+        _commitBar.titleLabel.font = [UIFont systemFontOfSize:15];
+        [_commitBar setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _commitBar.backgroundColor = [UIColor colorWithRed:251/255.0 green:82/255.0 blue:136/255.0 alpha:0.8];
 
+        [_commitBar setTitle:@"确认" forState:UIControlStateNormal];
         [_commitBar addTarget:self action:@selector(commitAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_commitBar];
-        [_commitBar setTranslatesAutoresizingMaskIntoConstraints:false];
-        [_commitBar setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
-        [_commitBar setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
-        
-        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UISCREEN_WIDTH, 0.5)];
-        topLineView.backgroundColor = LINE_COLOR;
-        [self addSubview:topLineView];
-        [topLineView setTranslatesAutoresizingMaskIntoConstraints:false];
-        
-        UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 43.5, UISCREEN_WIDTH, 0.5)];
-        bottomLineView.backgroundColor = LINE_COLOR;
-        [self addSubview:bottomLineView];
-        [bottomLineView setTranslatesAutoresizingMaskIntoConstraints:false];
-        
-        NSLayoutConstraint *constrant_a = [NSLayoutConstraint constraintWithItem:_cancelBar attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:10];
-        NSLayoutConstraint *constrant_b = [NSLayoutConstraint constraintWithItem:_cancelBar attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-        NSLayoutConstraint *constrant_c = [NSLayoutConstraint constraintWithItem:_cancelBar attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-        [self addConstraints:@[constrant_a, constrant_b, constrant_c]];
-        
-        NSLayoutConstraint *constrant_d = [NSLayoutConstraint constraintWithItem:_titleBar attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_cancelBar attribute:NSLayoutAttributeRight multiplier:1.0 constant:10];
-        NSLayoutConstraint *constrant_e = [NSLayoutConstraint constraintWithItem:_titleBar attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-        NSLayoutConstraint *constrant_f = [NSLayoutConstraint constraintWithItem:_titleBar attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-        [self addConstraints:@[constrant_d, constrant_e, constrant_f]];
-        
-        NSLayoutConstraint *constrant_g = [NSLayoutConstraint constraintWithItem:_commitBar attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_titleBar attribute:NSLayoutAttributeRight multiplier:1.0 constant:10];
-        NSLayoutConstraint *constrant_h = [NSLayoutConstraint constraintWithItem:_commitBar attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-        NSLayoutConstraint *constrant_i = [NSLayoutConstraint constraintWithItem:_commitBar attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-        NSLayoutConstraint *constrant_j = [NSLayoutConstraint constraintWithItem:_commitBar attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:-10];
-        [self addConstraints:@[constrant_g, constrant_h, constrant_i, constrant_j]];
-        
-        NSLayoutConstraint *constrant_k = [NSLayoutConstraint constraintWithItem:topLineView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
-        NSLayoutConstraint *constrant_l = [NSLayoutConstraint constraintWithItem:topLineView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-        NSLayoutConstraint *constrant_m = [NSLayoutConstraint constraintWithItem:topLineView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-        NSLayoutConstraint *constrant_n = [NSLayoutConstraint constraintWithItem:topLineView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.5];
-        [self addConstraints:@[constrant_k, constrant_l, constrant_m, constrant_n]];
-        
-        NSLayoutConstraint *constrant_o = [NSLayoutConstraint constraintWithItem:bottomLineView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
-        NSLayoutConstraint *constrant_p = [NSLayoutConstraint constraintWithItem:bottomLineView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-        NSLayoutConstraint *constrant_q = [NSLayoutConstraint constraintWithItem:bottomLineView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-        NSLayoutConstraint *constrant_r = [NSLayoutConstraint constraintWithItem:bottomLineView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.5];
-        [self addConstraints:@[constrant_o, constrant_p, constrant_q, constrant_r]];
-        
+
+        _cancelBar.frame = CGRectMake(10, frame.size.height / 2.0 - 12.5, 56, 25);
+        _commitBar.frame = CGRectMake(UISCREEN_WIDTH - 66, frame.size.height / 2.0 - 12.5, 56, 25);
+
+        _cancelBar.layer.cornerRadius = 25 / 2.0;
+        _commitBar.layer.cornerRadius = 25 / 2.0;
+
+        _cancelBar.layer.masksToBounds = YES;
+        _commitBar.layer.masksToBounds = YES;
+
+        self.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+
 
     }
     return self;
@@ -113,35 +76,32 @@
 
 #pragma mark - install
 
-- (void)setCancelBarTitle:(NSString *)cancelBarTitle {
-    _cancelBarTitle = cancelBarTitle;
-    if (self.cancelBar) {
-//        self.cancelBar.text = cancelBarTitle;
-        [self.cancelBar setTitle:cancelBarTitle forState:UIControlStateNormal];
-    }
-}
-
-- (void)setCancelBarTintColor:(UIColor *)cancelBarTintColor {
-    _cancelBarTintColor = cancelBarTintColor;
-    if (self.cancelBar) {
-        self.cancelBar.tintColor = cancelBarTintColor;
-    }
-}
-
-- (void)setCommitBarTitle:(NSString *)commitBarTitle {
-    _commitBarTitle = commitBarTitle;
-    if (self.commitBar) {
-//        self.commitBar.text = commitBarTitle;
-        [self.commitBar setTitle:commitBarTitle forState:UIControlStateNormal];
-    }
-}
-
-- (void)setCommitBarTintColor:(UIColor *)commitBarTintColor {
-    _commitBarTintColor = commitBarTintColor;
-    if (self.commitBar) {
-        self.commitBar.tintColor = commitBarTintColor;
-    }
-}
+//- (void)setCancelBarTitle:(NSString *)cancelBarTitle {
+//    _cancelBarTitle = cancelBarTitle;
+////    if (self.cancelBar) {
+//////        self.cancelBar.text = cancelBarTitle;
+////        [self.cancelBar setTitle:cancelBarTitle forState:UIControlStateNormal];
+////    }
+//}
+//
+//- (void)setCancelBarTintColor:(UIColor *)cancelBarTintColor {
+//    _cancelBarTintColor = cancelBarTintColor;
+//}
+//
+//- (void)setCommitBarTitle:(NSString *)commitBarTitle {
+//    _commitBarTitle = commitBarTitle;
+//    if (self.commitBar) {
+////        self.commitBar.text = commitBarTitle;
+//        [self.commitBar setTitle:commitBarTitle forState:UIControlStateNormal];
+//    }
+//}
+//
+//- (void)setCommitBarTintColor:(UIColor *)commitBarTintColor {
+//    _commitBarTintColor = commitBarTintColor;
+//    if (self.commitBar) {
+//        self.commitBar.tintColor = commitBarTintColor;
+//    }
+//}
 
 - (void)setTitleBarTitle:(NSString *)titleBarTitle {
     _titleBarTitle = titleBarTitle;

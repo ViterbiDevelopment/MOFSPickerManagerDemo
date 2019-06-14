@@ -127,8 +127,7 @@
 }
 
 - (void)initToolBar {
-    self.toolBar = [[MOFSToolView alloc] initWithFrame:CGRectMake(0, 0, UISCREEN_WIDTH, 44)];
-    self.toolBar.backgroundColor = [UIColor whiteColor];
+    self.toolBar = [[MOFSToolView alloc] initWithFrame:CGRectMake(0, 0, UISCREEN_WIDTH, 56)];
 }
 
 - (void)initContainerView {
@@ -139,7 +138,7 @@
 }
 
 - (void)initBgView {
-    self.bgView = [[UIView alloc] initWithFrame:CGRectMake(0, UISCREEN_HEIGHT - self.frame.size.height - 44, UISCREEN_WIDTH, self.frame.size.height + self.toolBar.frame.size.height)];
+    self.bgView = [[UIView alloc] initWithFrame:CGRectMake(0, UISCREEN_HEIGHT - self.frame.size.height - 56, UISCREEN_WIDTH, self.frame.size.height + self.toolBar.frame.size.height)];
 }
 
 #pragma mark - Action

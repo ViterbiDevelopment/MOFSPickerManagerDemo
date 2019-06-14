@@ -33,7 +33,10 @@
     if (lb.tag == 1) {
         
         //单例方法
-        [MOFSPickerManager shareManger].datePicker.toolBar.cancelBar.textColor = [UIColor redColor];
+//        [MOFSPickerManager shareManger].datePicker.toolBar.cancelBar.textColor = [UIColor redColor];
+        [[MOFSPickerManager shareManger].datePicker.toolBar.cancelBar setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [MOFSPickerManager shareManger].datePicker.toolBar.backgroundColor = [UIColor redColor];
+
         [MOFSPickerManager shareManger].datePicker.toolBar.titleBarTitle = @"选择日期";
         [MOFSPickerManager shareManger].datePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
         [[MOFSPickerManager shareManger] showDatePickerWithTitle:@"Chose your birthday" cancelTitle:@"Cancel" commitTitle:@"Confirm" firstDate:nil minDate:nil maxDate:nil datePickerMode:UIDatePickerModeDate tag:0 commitBlock:^(NSDate *date) {

@@ -10,8 +10,8 @@
 
 @interface MOFSToolView : UIView
 
-@property (nonatomic, strong) UILabel *cancelBar;
-@property (nonatomic, strong) UILabel *commitBar;
+@property (nonatomic, strong) UIButton *cancelBar;
+@property (nonatomic, strong) UIButton *commitBar;
 @property (nonatomic, strong) UILabel *titleBar;
 
 /**

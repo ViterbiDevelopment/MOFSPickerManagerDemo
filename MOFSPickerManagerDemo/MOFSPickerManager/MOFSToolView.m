@@ -21,13 +21,13 @@
         
         //self.translatesAutoresizingMaskIntoConstraints = false;
         
-        _cancelBar = [UILabel new];
-        _cancelBar.font = [UIFont systemFontOfSize:14];
-        _cancelBar.textColor = BAR_COLOR;
-        _cancelBar.text = @"取消";
-        _cancelBar.textAlignment = NSTextAlignmentLeft;
-        _cancelBar.userInteractionEnabled = true;
-        [_cancelBar addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelAction)]];
+        _cancelBar = [UIButton buttonWithType:UIButtonTypeCustom];
+//        _cancelBar.font = [UIFont systemFontOfSize:14];
+        _cancelBar.titleLabel.font = [UIFont systemFontOfSize:14];
+//        _cancelBar.textColor = BAR_COLOR;
+        [_cancelBar setTitleColor:BAR_COLOR forState:UIControlStateNormal];
+        [_cancelBar setTitle:@"取消" forState:UIControlStateNormal];
+        [_cancelBar addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_cancelBar];
         [_cancelBar setTranslatesAutoresizingMaskIntoConstraints:false];
         [_cancelBar setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
@@ -41,13 +41,14 @@
         [_titleBar setTranslatesAutoresizingMaskIntoConstraints:false];
         [_titleBar setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
         
-        _commitBar = [UILabel new];
-        _commitBar.font = [UIFont systemFontOfSize:14];
-        _commitBar.textColor = BAR_COLOR;
-        _commitBar.text = @"完成";
-        _commitBar.textAlignment = NSTextAlignmentRight;
-        _commitBar.userInteractionEnabled = true;
-        [_commitBar addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commitAction)]];
+        _commitBar = [UIButton buttonWithType:UIButtonTypeCustom];
+//        _commitBar.font = [UIFont systemFontOfSize:14];
+        _commitBar.titleLabel.font = [UIFont systemFontOfSize:14];
+//        _commitBar.textColor = BAR_COLOR;
+        [_commitBar setTitleColor:BAR_COLOR forState:UIControlStateNormal];
+        [_commitBar setTitle:@"完成" forState:UIControlStateNormal];
+
+        [_commitBar addTarget:self action:@selector(commitAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_commitBar];
         [_commitBar setTranslatesAutoresizingMaskIntoConstraints:false];
         [_commitBar setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
@@ -115,7 +116,8 @@
 - (void)setCancelBarTitle:(NSString *)cancelBarTitle {
     _cancelBarTitle = cancelBarTitle;
     if (self.cancelBar) {
-        self.cancelBar.text = cancelBarTitle;
+//        self.cancelBar.text = cancelBarTitle;
+        [self.cancelBar setTitle:cancelBarTitle forState:UIControlStateNormal];
     }
 }
 
@@ -129,7 +131,8 @@
 - (void)setCommitBarTitle:(NSString *)commitBarTitle {
     _commitBarTitle = commitBarTitle;
     if (self.commitBar) {
-        self.commitBar.text = commitBarTitle;
+//        self.commitBar.text = commitBarTitle;
+        [self.commitBar setTitle:commitBarTitle forState:UIControlStateNormal];
     }
 }
 
